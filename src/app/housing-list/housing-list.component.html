@@ -1,0 +1,13 @@
+<form class="location-search" action="">
+    <div class="col-md-4 d-flex flex-column">
+        <label class="location-search__label" for="location-search">Search for a new place</label>
+        <input type="text" class="location-search__input" #search id="location-search" placeholder="Ex. Chicago">
+    </div>
+    <button type="button" class="location-search__btn btn btn-sm btn-warning mt-3" (click)="searchHousingLocations(search.value)">Search</button>
+    <div class="results d-flex justify-content-between flex-column">
+        <div class="m-1 col-md-6 d-flex justify-content-between" *ngFor="let item of results">
+            <span class="results__name">{{item.name}}</span>
+            <button type="button" class="results__btn btn btn-sm btn-secondary" (click)="selectedLocation(item)">view</button>
+        </div>
+    </div>
+</form>

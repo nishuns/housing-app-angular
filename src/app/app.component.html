@@ -1,0 +1,46 @@
+<main>
+  <Header class="header m-3 border-bottom">
+    <!-- header::logo -->
+    <div class="header__logo d-flex align-items-start">
+      <img
+        class="header__logo--img"
+        src="../assets/img/logo.svg"
+        alt="Fairhouse"
+      />
+      <span class="header__logo--title m-2 h5">Fairhouse</span>
+    </div>
+    <!-- header::navigation -->
+  </Header>
+  <div class="row justify-content-between m-3">
+    <div class="col">
+      <section>
+        <app-housing-list
+          [locationList]="housingLocationList"
+          (selectedLocationEvent)="updateSelectedLocation($event)"
+        ></app-housing-list>
+      </section>
+    </div>
+
+    <div class="col" style="max-width: 320px;" *ngIf="selectedLocation">
+      <div class="card">
+        <img class="card-img-top" [src]="selectedLocation.photo" alt="Card image" />
+        <div class="card-body">
+          <h5 class="card-title">{{ selectedLocation.name }}</h5>
+          <p class="card-text">
+            Available Units: {{selectedLocation.availableUnits}}
+          </p>
+          <p class="card-text">
+            {{selectedLocation.city}}, {{selectedLocation.state}}
+          </p>
+          <p class="card-text">
+            {{selectedLocation.laundry? "Has" : "Does not Have"}} Laundry
+          </p>
+          <p class="card-text">
+            {{selectedLocation.laundry? "Has" : "Does not Have"}} Wifi
+          </p>
+          <a href="#" class="btn btn-warning">Contact Seller</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</main>
